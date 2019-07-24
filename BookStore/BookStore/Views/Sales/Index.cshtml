@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BookStore.Models.Sale>
+
+@{
+    ViewBag.Title = "Ventas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-inline col-lg-offset-2 col-lg-8">
+        <div class="form-group mb-2">
+            <input type="text" id="ClientName" name="ClientName" class="form-control" placeholder="Nombre cliente" autocomplete="off">
+        </div>
+        &nbsp;&nbsp;Desde
+        <div class="form-group">
+            <input type="date" id="StartDate" name="StartDate" class="form-control datepicker" placeholder="Fecha inicial">
+        </div>
+        hasta
+        <div class="form-group">
+            <input type="date" id="EndDate" name="EndDate" class="form-control datepicker" placeholder="Fecha final">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Buscar">
+    </div>
+}
+<table class="table table-striped ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sale_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sale_Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salesman)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Last_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salesman)
+            </td>
+        </tr>
+    }
+
+</table>
